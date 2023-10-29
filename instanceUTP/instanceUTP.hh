@@ -1,0 +1,138 @@
+#pragma once
+#include <iostream>
+#include <vector>
+#include <memory>
+#include <fstream>
+#include "../nlohmann-json/json.hpp"
+#include "constraintUTP.hh"
+using json = nlohmann::json;
+
+typedef unsigned int u32;
+
+class instanceUTP{
+public:
+    instanceUTP(std::string filenameJson);
+    void generate();
+    u32 nr_weeks;
+    u32 nr_days;
+    u32 nr_slots;
+    u32 nr_day_per_weeks;
+    u32 nr_slots_per_day;
+    u32 nr_course;
+    u32 nr_parts;
+    u32 nr_classes;
+    u32 nr_sessions;
+    u32 max_part_sessions;
+    std::vector<std::vector<u32>> course_parts;
+    std::vector<std::vector<u32>> part_classes;
+    u32* part_nrsessions;
+    u32 nr_equipements;
+    u32 nr_rooms;
+    u32 nr_teachers;
+    u32 nr_students;
+    u32 nr_parts_rooms;
+    std::vector<std::vector<u32>> part_rooms;
+    u32 nr_part_teachers;
+    std::vector<std::vector<u32>> part_teachers;
+    std::vector<std::vector<u32>> part_dailyslots;
+    std::vector<std::vector<u32>> part_days;
+    std::vector<std::vector<u32>> part_weeks;
+    u32* part_session_lenght;
+    u32 max_equipment_count;
+    u32 max_class_maxheadcount;
+    u32 max_teacher_session;
+    u32 max_teacher_sessions;
+    u32* equipment_count;
+    u32 max_room_capaciy;
+    int* room_capacity;
+    std::string* part_room_use;
+    u32** teacher_service;//part_teacher_session_count
+    u32* part_session_teacher_count;
+    u32* class_maxheadcount;
+    u32* class_parent;
+    std::vector<std::vector<u32>> student_courses;
+    std::string* equipment_name;
+    std::string* room_name;
+    std::string* teacher_name;
+    std::string* student_name;
+    std::string*course_name;
+    std::string* part_name;
+    std::string* class_name;
+    u32 nr_labels;
+    std::string* label_name;
+    std::vector<std::vector<u32>> room_labels;
+    std::vector<std::vector<u32>> teacher_labels;
+    std::vector<std::vector<u32>> student_labels;
+    std::vector<std::vector<u32>> course_labels;
+    std::vector<std::vector<u32>> part_labels;
+    u32 nr_rules;
+    u32 nr_scopes;
+    std::vector<std::vector<u32>> rule_scopes;
+    std::string* scope_type;
+    u32 mask_lenght;
+    std::vector<std::vector<u32>> scope_mask;
+    u32 nr_filters;
+    std::vector<std::vector<u32>> scope_filters;
+    std::string* filter_type;
+    std::vector<std::vector<u32>> filter_elements;
+    std::string* rule_constraint;
+    std::string* constraint_hardness;
+    u32 nr_parameters;
+    std::vector<std::vector<u32>> constraint_parameters;
+    std::string* parameter_name;
+    std::string* parameter_type;
+    u32 max_parameter_value;
+    u32 max_parameter_size;
+    std::vector<std::vector<std::string>> parameter_value;
+    u32 nr_groups;
+    u32 max_group_headcount;
+    u32* group_headcount;
+    std::string* group_name;
+    std::vector<std::vector<u32>> group_students;
+    std::vector<std::vector<u32>> group_classes;
+    std::vector<std::vector<u32>> group_sessions;
+    std::vector<std::vector<u32>> class_groups;
+    u32* session_week;
+    u32* session_day;
+    u32* session_slot;
+    std::vector<std::vector<u32>> session_teachers;
+    std::vector<std::vector<u32>> session_rooms;
+    u32* session_solution_rank;
+    u32* session_solution_class;
+    u32* session_solution;
+    std::vector<constraintUTP> constraints;
+    std::vector<std::vector<u32>> part_slots;
+    u32* class_part;
+    u32* part_course;
+    u32* session_class;
+    u32* session_rank;
+    std::vector<std::vector<u32>> class_sessions;
+    std::vector<std::vector<u32>> teacher_parts;
+    std::vector<std::vector<u32>> room_parts;
+    u32* class_multiple_teacher;
+    u32 nr_class_multiple_teacher;
+    u32* class_position_multiple_teacher;
+    u32* class_multiple_room;
+    u32 nr_class_multiple_room;
+    u32* class_position_multiple_room;
+    u32* part_room_worst_case;
+    int* room_capacity_v2;
+    u32* student_group;
+    u32* session_xrooms;
+    u32* vars_room;
+    u32* var_same_room;
+    u32* session_xteachers;
+    u32 vars_teachers;
+    u32* var_same_teachers;
+    u32* class_rank;
+    std::vector<std::vector<std::vector<u32>>> group_of_class_eq;
+    u32* service_room;
+    u32** part_minmax_service_room;
+
+
+
+
+    json jFile;
+private:
+    std::string filenameJson;
+};//FinClass
